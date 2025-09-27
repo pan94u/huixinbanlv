@@ -1,0 +1,49 @@
+{
+  "name": "ai-elderly-care-platform",
+  "version": "1.0.0",
+  "description": "AI智能养老平台 - 包含老人端、子女端和机构端",
+  "private": true,
+  "workspaces": [
+    "senior-citizens",
+    "guardian",
+    "institution"
+  ],
+  "scripts": {
+    "dev:senior": "cd senior-citizens && npm run dev",
+    "dev:guardian": "cd guardian && npm run dev",
+    "dev:institution": "cd institution && npm run dev",
+    "dev:all": "concurrently \"npm run dev:senior\" \"npm run dev:guardian\" \"npm run dev:institution\"",
+    "build:senior": "cd senior-citizens && npm run build",
+    "build:guardian": "cd guardian && npm run build",
+    "build:institution": "cd institution && npm run build",
+    "build:all": "npm run build:senior && npm run build:guardian && npm run build:institution",
+    "install:all": "npm install && cd senior-citizens && npm install && cd ../guardian && npm install && cd ../institution && npm install",
+    "clean": "rm -rf node_modules senior-citizens/node_modules guardian/node_modules institution/node_modules",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/ai-elderly-care-platform"
+  },
+  "keywords": [
+    "elderly-care",
+    "AI",
+    "healthcare",
+    "companion",
+    "养老",
+    "智能陪伴"
+  ],
+  "author": "Your Team",
+  "license": "MIT"
+}
