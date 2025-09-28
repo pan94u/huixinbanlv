@@ -31,14 +31,14 @@
   --spacing-xl: 32px;
   --spacing-2xl: 48px;
 
-  /* Typography - Larger for elderly */
-  --font-xs: 14px;
-  --font-sm: 16px;
-  --font-md: 18px;
-  --font-lg: 20px;
-  --font-xl: 24px;
-  --font-2xl: 28px;
-  --font-3xl: 32px;
+  /* Typography - Extra large for elderly users with vision difficulties */
+  --font-xs: 18px;
+  --font-sm: 20px;
+  --font-md: 22px;
+  --font-lg: 26px;
+  --font-xl: 30px;
+  --font-2xl: 36px;
+  --font-3xl: 42px;
 
   /* Border radius */
   --radius-sm: 8px;
@@ -72,7 +72,8 @@ html, body {
 body {
   font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, sans-serif;
   font-size: var(--font-md);
-  line-height: 1.5;
+  line-height: 1.6;
+  letter-spacing: 0.3px;
   color: var(--gray-900);
   background: var(--gray-50);
   -webkit-font-smoothing: antialiased;

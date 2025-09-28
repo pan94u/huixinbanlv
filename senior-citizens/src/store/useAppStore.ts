@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { User, AppScreen, FamilyMember, AIGrandsonMessage, HealthReminder } from '../types/index';
+import type { User, AppScreen, FamilyMember, FamilyMessage, AIGrandsonMessage, HealthReminder } from '../types/index';
 
 interface AppStore {
   // User state
@@ -18,6 +18,11 @@ interface AppStore {
   messages: AIGrandsonMessage[];
   addMessage: (message: AIGrandsonMessage) => void;
   clearMessages: () => void;
+
+  // Family messages
+  familyMessages: FamilyMessage[];
+  addFamilyMessage: (message: FamilyMessage) => void;
+  markFamilyMessageAsRead: (id: string) => void;
 
   // Voice interaction
   isListening: boolean;
@@ -46,6 +51,7 @@ export const useAppStore = create<AppStore>((set) => ({
   currentScreen: 'home',
   grandsonMood: 'happy',
   messages: [],
+  familyMessages: [],
   isListening: false,
   activeCall: null,
   reminders: [],
@@ -61,6 +67,16 @@ export const useAppStore = create<AppStore>((set) => ({
   })),
 
   clearMessages: () => set({ messages: [] }),
+
+  addFamilyMessage: (message) => set((state) => ({
+    familyMessages: [...state.familyMessages, message]
+  })),
+
+  markFamilyMessageAsRead: (id) => set((state) => ({
+    familyMessages: state.familyMessages.map(m =>
+      m.id === id ? { ...m, isRead: true } : m
+    )
+  })),
 
   setIsListening: (listening) => set({ isListening: listening }),
 
@@ -160,9 +176,23 @@ export const useAppStore = create<AppStore>((set) => ({
       }
     ];
 
+    // Initialize with son's message from last night
+    const familyMessages: FamilyMessage[] = [
+      {
+        id: 'fm1',
+        sender: '张小明',
+        senderRelationship: 'son',
+        content: '爸，天冷了记得多穿衣服，我周末回来看您！',
+        timestamp: new Date(Date.now() - 43200000), // 12 hours ago (last night)
+        isRead: false,
+        avatar: '👨'
+      }
+    ];
+
     set({
       currentUser: mockUser,
-      reminders: sampleReminders
+      reminders: sampleReminders,
+      familyMessages: familyMessages
     });
   }
 }));

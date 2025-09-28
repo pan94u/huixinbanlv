@@ -5,6 +5,8 @@ import { ChatScreen } from './components/ChatScreen';
 import { HealthScreen } from './components/HealthScreen';
 import { FamilyScreen } from './components/FamilyScreen';
 import './App.css';
+import './styles/global.css';
+import './styles/accessibility.css';
 
 function App() {
   const { currentScreen, initializeApp, emergencyMode } = useAppStore();
@@ -54,9 +56,9 @@ function App() {
             transform: 'translateX(-50%)',
             background: '#FF1744',
             color: 'white',
-            padding: '15px 30px',
-            borderRadius: '10px',
-            fontSize: '24px',
+            padding: '20px 40px',
+            borderRadius: '15px',
+            fontSize: '32px',
             fontWeight: 'bold',
             boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)'
           }}>

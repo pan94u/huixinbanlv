@@ -9,7 +9,9 @@ export const HomeScreenV2: React.FC = () => {
     grandsonMood,
     messages,
     setCurrentScreen,
-    reminders
+    reminders,
+    familyMessages,
+    markFamilyMessageAsRead
   } = useAppStore();
 
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -28,6 +30,7 @@ export const HomeScreenV2: React.FC = () => {
   }, [currentTime]);
 
   const pendingReminders = reminders.filter(r => !r.completed).length;
+  const unreadFamilyMessages = familyMessages.filter(m => !m.isRead);
 
   return (
     <div className="mobile-container">
@@ -62,7 +65,13 @@ export const HomeScreenV2: React.FC = () => {
         </div>
 
         {/* AI Grandson Card */}
-        <div className="grandson-card touch-feedback" onClick={() => setCurrentScreen('chat')}>
+        <div className="grandson-card touch-feedback" onClick={() => {
+          // Mark family message as read when opening chat
+          if (unreadFamilyMessages.length > 0) {
+            unreadFamilyMessages.forEach(msg => markFamilyMessageAsRead(msg.id));
+          }
+          setCurrentScreen('chat');
+        }}>
           <div className="grandson-avatar">
             <div className="avatar-circle">
               <span className="avatar-emoji">🤖</span>
@@ -72,8 +81,25 @@ export const HomeScreenV2: React.FC = () => {
           <div className="grandson-content">
             <h3 className="grandson-name">小智</h3>
             <p className="grandson-message">
-              爷爷，今天天气不错，要不要出去走走？我陪您聊天~
+              {unreadFamilyMessages.length > 0 && unreadFamilyMessages[0].senderRelationship === 'son'
+                ? `张大爷早上好！您儿子小明昨晚给您留言了："${unreadFamilyMessages[0].content}" 他真的很关心您呢！`
+                : '张大爷，今天天气不错，要不要出去走走？我陪您聊天~'
+              }
             </p>
+            {unreadFamilyMessages.length > 0 && (
+              <span style={{
+                background: '#FF6B35',
+                color: 'white',
+                padding: '4px 12px',
+                borderRadius: '20px',
+                fontSize: '18px',
+                fontWeight: 'bold',
+                marginTop: '10px',
+                display: 'inline-block'
+              }}>
+                新留言！
+              </span>
+            )}
           </div>
           <div className="chat-arrow">›</div>
         </div>

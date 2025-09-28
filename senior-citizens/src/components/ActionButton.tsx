@@ -17,19 +17,19 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
 }) => {
   const sizeStyles = {
     small: {
-      padding: '10px 15px',
-      fontSize: '18px',
-      iconSize: '24px'
+      padding: '12px 20px',
+      fontSize: '22px',
+      iconSize: '30px'
     },
     medium: {
-      padding: '15px 25px',
-      fontSize: '22px',
-      iconSize: '32px'
+      padding: '18px 30px',
+      fontSize: '26px',
+      iconSize: '38px'
     },
     large: {
-      padding: '20px 35px',
-      fontSize: '26px',
-      iconSize: '40px'
+      padding: '24px 40px',
+      fontSize: '32px',
+      iconSize: '48px'
     }
   };
 

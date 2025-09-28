@@ -53,6 +53,16 @@ export interface FamilyMember {
   lastContact?: Date;
 }
 
+export interface FamilyMessage {
+  id: string;
+  sender: string;
+  senderRelationship: 'son' | 'daughter' | 'grandson' | 'granddaughter' | 'other';
+  content: string;
+  timestamp: Date;
+  isRead: boolean;
+  avatar?: string;
+}
+
 export interface EmergencyContact {
   name: string;
   phone: string;

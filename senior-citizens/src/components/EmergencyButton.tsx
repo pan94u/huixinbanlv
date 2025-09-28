@@ -101,8 +101,8 @@ export const EmergencyButton: React.FC = () => {
         onTouchStart={handlePressStart}
         onTouchEnd={handlePressEnd}
         style={{
-          width: '120px',
-          height: '120px',
+          width: '150px',
+          height: '150px',
           borderRadius: '50%',
           background: emergencyTriggered
             ? 'linear-gradient(135deg, #FF1744 0%, #D50000 100%)'
@@ -122,25 +122,25 @@ export const EmergencyButton: React.FC = () => {
       >
         {emergencyTriggered ? (
           <>
-            <span style={{ fontSize: '48px', color: 'white' }}>🚨</span>
-            <span style={{ fontSize: '20px', color: 'white', marginTop: '5px' }}>
+            <span style={{ fontSize: '60px', color: 'white' }}>🚨</span>
+            <span style={{ fontSize: '26px', color: 'white', marginTop: '5px', fontWeight: 'bold' }}>
               呼救中...
             </span>
           </>
         ) : isPressed ? (
           <>
-            <span style={{ fontSize: '48px', color: 'white' }}>🆘</span>
-            <span style={{ fontSize: '32px', color: 'white', fontWeight: 'bold' }}>
+            <span style={{ fontSize: '60px', color: 'white' }}>🆘</span>
+            <span style={{ fontSize: '40px', color: 'white', fontWeight: 'bold' }}>
               {countdown}
             </span>
-            <span style={{ fontSize: '16px', color: 'white' }}>
+            <span style={{ fontSize: '22px', color: 'white', fontWeight: 'bold' }}>
               继续按住
             </span>
           </>
         ) : (
           <>
-            <span style={{ fontSize: '48px', color: 'white' }}>🆘</span>
-            <span style={{ fontSize: '20px', color: 'white', marginTop: '5px' }}>
+            <span style={{ fontSize: '60px', color: 'white' }}>🆘</span>
+            <span style={{ fontSize: '26px', color: 'white', marginTop: '5px', fontWeight: 'bold' }}>
               紧急呼救
             </span>
           </>

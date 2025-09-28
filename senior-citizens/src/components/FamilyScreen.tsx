@@ -3,7 +3,7 @@ import { useAppStore } from '../store/useAppStore';
 import '../styles/global.css';
 
 export const FamilyScreen: React.FC = () => {
-  const { currentUser, setCurrentScreen } = useAppStore();
+  const { currentUser, setCurrentScreen, familyMessages } = useAppStore();
   const [activeTab, setActiveTab] = useState<'contacts' | 'messages'>('contacts');
 
   const familyMembers = [
@@ -36,22 +36,32 @@ export const FamilyScreen: React.FC = () => {
     }
   ];
 
+  // Combine stored family messages with static ones
   const messages = [
-    {
-      id: '1',
-      sender: '张小丽',
-      avatar: '👩',
-      content: '爸爸，天冷了记得多穿衣服，我周末回来看您！',
-      time: '14:30',
-      date: '今天'
-    },
+    ...familyMessages.map(msg => ({
+      id: msg.id,
+      sender: msg.sender,
+      avatar: msg.avatar || '👤',
+      content: msg.content,
+      time: new Date(msg.timestamp).toLocaleTimeString('zh-CN', {
+        hour: '2-digit',
+        minute: '2-digit'
+      }),
+      date: new Date(msg.timestamp).toDateString() === new Date().toDateString()
+        ? '今天'
+        : new Date(msg.timestamp).toDateString() === new Date(Date.now() - 86400000).toDateString()
+        ? '昨天'
+        : new Date(msg.timestamp).toLocaleDateString('zh-CN'),
+      isRead: msg.isRead
+    })),
     {
       id: '2',
-      sender: '张小明',
-      avatar: '👨',
-      content: '爸，我给您买了新的血压计，明天快递就到了。',
-      time: '20:15',
-      date: '昨天'
+      sender: '张小丽',
+      avatar: '👩',
+      content: '爸爸，记得按时吃药，我给您设置了提醒。',
+      time: '14:30',
+      date: '昨天',
+      isRead: true
     }
   ];
 

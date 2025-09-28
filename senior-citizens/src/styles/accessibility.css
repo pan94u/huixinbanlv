@@ -1,0 +1,255 @@
+/* Enhanced Accessibility Styles for Elderly Users */
+/* 老年人视力辅助样式 */
+
+/* Global text enhancements */
+* {
+  /* Increase letter spacing for better readability */
+  letter-spacing: 0.5px;
+}
+
+/* Ensure all text is easily readable */
+p, span, div, li, td, th {
+  min-font-size: var(--font-sm);
+  line-height: 1.6;
+}
+
+/* Larger headings with better contrast */
+h1 {
+  font-size: var(--font-3xl);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: var(--spacing-lg);
+}
+
+h2 {
+  font-size: var(--font-2xl);
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: var(--spacing-md);
+}
+
+h3 {
+  font-size: var(--font-xl);
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: var(--spacing-md);
+}
+
+/* Enhanced button styles for better visibility and touch targets */
+button, .btn {
+  min-height: 60px;
+  min-width: 120px;
+  font-size: var(--font-lg);
+  font-weight: 600;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-width: 3px;
+  transition: all 0.3s ease;
+}
+
+button:hover, .btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+button:active, .btn:active {
+  transform: scale(0.98);
+}
+
+/* Larger input fields */
+input, textarea, select {
+  font-size: var(--font-lg);
+  padding: var(--spacing-md);
+  min-height: 56px;
+  border-width: 2px;
+  border-radius: var(--radius-md);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--gray-500);
+  font-size: var(--font-md);
+}
+
+/* Focus states with high contrast */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+a:focus {
+  outline: 4px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Links with better visibility */
+a {
+  font-size: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Icons should be larger */
+.icon, [class*="icon"] {
+  min-width: 32px;
+  min-height: 32px;
+}
+
+/* Navigation items */
+.nav-item, nav button, nav a {
+  min-height: 64px;
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: var(--font-lg);
+  font-weight: 600;
+}
+
+/* Cards and containers */
+.card, [class*="card"] {
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+/* Lists with better spacing */
+ul, ol {
+  line-height: 2;
+}
+
+li {
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-md);
+}
+
+/* Tables with larger text */
+table {
+  font-size: var(--font-md);
+}
+
+th, td {
+  padding: var(--spacing-md);
+  min-height: 56px;
+}
+
+/* Modal and dialog enhancements */
+.modal, .dialog, [role="dialog"] {
+  min-width: 80%;
+}
+
+.modal-header, .dialog-header {
+  font-size: var(--font-xl);
+  font-weight: 700;
+  padding: var(--spacing-lg);
+}
+
+.modal-body, .dialog-body {
+  font-size: var(--font-lg);
+  padding: var(--spacing-xl);
+  line-height: 1.8;
+}
+
+/* Alert messages */
+.alert, [role="alert"] {
+  font-size: var(--font-lg);
+  padding: var(--spacing-lg);
+  border-width: 3px;
+  font-weight: 600;
+}
+
+/* Progress indicators */
+.progress-bar {
+  min-height: 20px;
+}
+
+/* Badges and labels */
+.badge, .label, .tag {
+  font-size: var(--font-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-weight: 700;
+}
+
+/* Tooltips with larger text */
+.tooltip, [role="tooltip"] {
+  font-size: var(--font-md);
+  padding: var(--spacing-md);
+}
+
+/* Dropdown menus */
+.dropdown-item, select option {
+  min-height: 48px;
+  padding: var(--spacing-md);
+  font-size: var(--font-md);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  * {
+    border-width: 2px !important;
+  }
+
+  button, input, textarea, select {
+    border: 2px solid currentColor !important;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark mode adjustments for better contrast */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #1a1a1a;
+    color: #f0f0f0;
+  }
+
+  button {
+    background: #333;
+    color: #fff;
+    border-color: #555;
+  }
+
+  input, textarea, select {
+    background: #2a2a2a;
+    color: #f0f0f0;
+    border-color: #555;
+  }
+}
+
+/* Touch device optimizations */
+@media (pointer: coarse) {
+  button, a, input, select, textarea {
+    min-height: 64px;
+    min-width: 64px;
+  }
+
+  .nav-item {
+    min-height: 72px;
+  }
+}
+
+/* Extra large text mode (can be toggled via JavaScript) */
+.text-xl-mode {
+  font-size: calc(var(--font-md) * 1.3);
+}
+
+.text-xl-mode h1 {
+  font-size: calc(var(--font-3xl) * 1.3);
+}
+
+.text-xl-mode h2 {
+  font-size: calc(var(--font-2xl) * 1.3);
+}
+
+.text-xl-mode h3 {
+  font-size: calc(var(--font-xl) * 1.3);
+}
+
+.text-xl-mode button,
+.text-xl-mode input,
+.text-xl-mode textarea,
+.text-xl-mode select {
+  font-size: calc(var(--font-lg) * 1.3);
+}
